@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somar números</title>
+    <style>
+        body > script > function > s{
+            color: red;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <h1>Somar Valores</h1>
+    <input type="number" id="txtn1"> +
+    <input type="number" id="txtn2">
+    <input type="button" value="Somar" id="btnSomar">
+    <div id="res">Resultado</div>
+    
+    <script>
+        document.getElementById('btnSomar').addEventListener('click', somar);
+
+        function somar() {
+            const tn1 = document.querySelector('#txtn1');
+            const tn2 = document.querySelector('#txtn2');
+            const res = document.querySelector('#res');
+
+            const n1 = Number(tn1.value);
+            const n2 = Number(tn2.value);
+            const s = n1 + n2;
+
+            res.innerHTML = `A soma entre 
+            <span style="color: green;">${n1}</span> e 
+            <span style="color: green;">${n2}</span> é de 
+            <span style="color: red;"><strong>${s}</strong></span>`;
+        }
+        
+    </script>
+</body>
+</html>
