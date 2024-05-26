@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio do Javascript</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ececec;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+        a{
+            text-decoration: none;
+            background-color: #ddfae5;
+            border-radius: 3px;
+            padding: 3px;
+        }
+   
+        input[type="text"] {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="button"] {
+            background-color: #28a745;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        input[type="button"]:hover {
+            background-color: #218838;
+        }
+        #res {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .language-buttons {
+            margin-top: 20px;
+        }
+        .language-buttons button {
+            margin: 0 5px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .language-buttons button:hover {
+            background-color: #ddd;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            input[type="text"], input[type="button"] {
+                font-size: 16px;
+                padding: 8px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            p {
+                font-size: 16px;
+            }
+            input[type="text"], input[type="button"] {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 20px;
+            }
+            p {
+                font-size: 14px;
+            }
+            input[type="text"], input[type="button"] {
+                font-size: 14px;
+                padding: 6px;
+            }
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Explora Portugal: A tua Viagem</h1>
+        <p id="question">A <span style="color: green;"><strong>Casinha da Glória</strong></span> deseja-te a melhor estadia. De que país vens? <input type="text" id="txtnac"placeholder="Indica o teu país"> </p>
+
+        <input type="button" value="Verificar" id="btnVerificar">
+        <div id="res"></div>
+        <div class="language-buttons">
+
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('es')">Español</button>
+            <button onclick="changeLanguage('fr')">Français</button>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            pt: {
+                title: 'Explora Portugal: A tua Viagem',
+                question: 'A <span style="color: green;"><strong>Casinha da Glória</strong></span> deseja-te a melhor estadia. De que país vens?',
+                verify: 'Verificar',
+                from: 'Vens de',
+                choice: 'Parabéns, fizeste a melhor escolha, <span style="color: green;"><strong> ficar em casa!</strong></span>',
+                far: 'Uau... vens de <span style="color: green;"><strong> LONGE</strong></span>. Aproveita a estadia em Portugal.',
+                enjoy: '<a href="https://www.youtube.com/channel/UC5YM_eNiVAJRVOISHLE1h2Q" target="_blank" id="chamada"><span style="color: green;">Agora é connosco, faz a tua reserva e usufrui do nosso melhor conforto</span>.</a>',
+                
+            },
+            en: {
+                title: 'Explore Portugal: Your Journey',
+                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> wishes you the best stay. What country do you come from?',
+                verify: 'Verify',
+                from: 'You are from',
+                choice: 'Congratulations, you made the best choice, staying home!',
+                far: 'Wow... you are from FAR AWAY. Enjoy your stay in Portugal.',
+                enjoy: 'Now it\'s with us, make your reservation and enjoy our best comfort.',
+            },
+            es: {
+                title: 'Explora Portugal: tu viaje',
+                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> les desea la mejor estadía. ¿De qué pais vienes?',
+                verify: 'Verificar',
+                from: 'Vienes de',
+                choice: '¡Felicidades, hiciste la mejor elección, quedarte en casa!',
+                far: 'Wow... vienes de LEJOS. Disfruta tu estadía en Portugal.',
+                enjoy: 'Ahora está con nosotros, haz tu reserva y disfruta de nuestro mejor confort.',
+            },
+            fr: {
+                title: 'Explorez le Portugal : Votre voyage',
+                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> vous souhaite le meilleur séjour. De quel pays venez vous?',
+                verify: 'Vérifier',
+                from: 'Tu viens de',
+                choice: 'Félicitations, tu as fait le meilleur choix, rester à la maison!',
+                far: 'Wow... tu viens de LOIN. Profite de ton séjour au Portugal.',
+                enjoy: 'Maintenant c\'est avec nous, fais ta réservation et profite de notre meilleur confort.',
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.getElementById('title').innerText = translations[lang].title;
+            document.getElementById('question').innerHTML = `${translations[lang].question} <input type="text" id="txtnac">`;
+            document.getElementById('btnVerificar').value = translations[lang].verify;
+        }
+
+        document.getElementById('btnVerificar').addEventListener('click', verificarNacionalidade);
+
+        function verificarNacionalidade() {
+            const nacionalidade = document.querySelector('#txtnac').value.trim();
+            const res = document.querySelector('#res');
+            const lang = document.documentElement.lang || 'pt-pt';  
+
+            res.innerHTML = `${translations[lang.split('-')[0]].from} ${nacionalidade}?`;
+
+            if (nacionalidade.toLowerCase() === 'portugal') {
+                res.innerHTML += `<p>${translations[lang.split('-')[0]].choice}</p>`;
+            } else {
+                res.innerHTML += `<p>${translations[lang.split('-')[0]].far}</p>`;
+            }
+
+            res.innerHTML += `<p>${translations[lang.split('-')[0]].enjoy}</p>`;
+        }
+    </script>
+</body>
+</html>
