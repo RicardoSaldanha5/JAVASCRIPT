@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio do Javascript</title>
-    <link rel="shortcut icon" href="imágens/favicon.ico" type="image/x-icon">
+    <title>Casinha da Glória: Boas Vindas</title>
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -44,13 +44,9 @@
             font-size: 18px;
             color: #555;
         }
-        a{
+        a {
             text-decoration: none;
-            background-color: #ddfae5;
-            border-radius: 3px;
-            padding: 3px;
         }
-   
         input[type="text"] {
             width: 90%;
             padding: 10px;
@@ -70,6 +66,21 @@
         input[type="button"]:hover {
             background-color: #218838;
         }
+        .button {
+            background-color: rgb(199, 248, 199);
+            color: green;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        .button:hover {
+            background-color: green;
+            color: white;
+        }
         #res {
             margin-top: 20px;
             font-size: 18px;
@@ -86,7 +97,7 @@
             transition: background-color 0.3s ease;
         }
         .language-buttons button:hover {
-            background-color: #ddd;
+            background-color: rgb(199, 248, 199);
         }
         @media (max-width: 768px) {
             .container {
@@ -102,21 +113,9 @@
                 font-size: 16px;
                 padding: 8px;
             }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            p {
+            .button {
                 font-size: 16px;
-            }
-            input[type="text"], input[type="button"] {
-                font-size: 14px;
-                padding: 10px;
+                padding: 8px 16px;
             }
         }
 
@@ -134,19 +133,23 @@
                 font-size: 14px;
                 padding: 6px;
             }
-            
+            .button {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 id="title">Explora Portugal: A tua Viagem</h1>
-        <p id="question">A <span style="color: green;"><strong>Casinha da Glória</strong></span> deseja-te a melhor estadia. De que país vens? <input type="text" id="txtnac"placeholder="Indica o teu país"> </p>
-
+        <p id="question">
+            A <span style="color: green;"><strong>Casinha da Glória</strong></span> deseja-te a melhor estadia. De que país vens? 
+            <input type="text" id="txtnac" placeholder="Indica o teu país">
+        </p>
         <input type="button" value="Verificar" id="btnVerificar">
         <div id="res"></div>
-        <div class="language-buttons">
-
+        <div class="language-buttons">      
             <button onclick="changeLanguage('en')">English</button>
             <button onclick="changeLanguage('es')">Español</button>
             <button onclick="changeLanguage('fr')">Français</button>
@@ -158,45 +161,51 @@
             pt: {
                 title: 'Explora Portugal: A tua Viagem',
                 question: 'A <span style="color: green;"><strong>Casinha da Glória</strong></span> deseja-te a melhor estadia. De que país vens?',
+                questionPlaceholder: 'Indica o teu país',
                 verify: 'Verificar',
                 from: 'Vens de',
                 choice: 'Parabéns, fizeste a melhor escolha, <span style="color: green;"><strong> ficar em casa!</strong></span>',
                 far: 'Uau... vens de <span style="color: green;"><strong> LONGE</strong></span>. Aproveita a estadia em Portugal.',
-                enjoy: '<a href="https://www.youtube.com/channel/UC5YM_eNiVAJRVOISHLE1h2Q" target="_blank" id="chamada"><span style="color: green;">Agora é connosco, faz a tua reserva e usufrui do nosso melhor conforto</span>.</a>',
-                
+                enjoy: '<button onclick="window.open(\'https://ricardosaldanha5.github.io/casinha-da-gloria/\', \'_blank\')" class="button">Agora é connosco, faz a tua reserva e usufrui do nosso melhor conforto</button>',
             },
             en: {
                 title: 'Explore Portugal: Your Journey',
                 question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> wishes you the best stay. What country do you come from?',
+                questionPlaceholder: 'Enter your country',
                 verify: 'Verify',
                 from: 'You are from',
                 choice: 'Congratulations, you made the best choice, staying home!',
                 far: 'Wow... you are from FAR AWAY. Enjoy your stay in Portugal.',
-                enjoy: 'Now it\'s with us, make your reservation and enjoy our best comfort.',
+                enjoy: '<button onclick="window.open(\'https://ricardosaldanha5.github.io/casinha-da-gloria/\', \'_blank\')" class="button">Now it\'s with us, make your reservation and enjoy our best comfort</button>',
             },
             es: {
                 title: 'Explora Portugal: tu viaje',
-                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> les desea la mejor estadía. ¿De qué pais vienes?',
+                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> les desea la mejor estadía. ¿De qué país vienes?',
+                questionPlaceholder: 'Indica tu país',
                 verify: 'Verificar',
                 from: 'Vienes de',
                 choice: '¡Felicidades, hiciste la mejor elección, quedarte en casa!',
                 far: 'Wow... vienes de LEJOS. Disfruta tu estadía en Portugal.',
-                enjoy: 'Ahora está con nosotros, haz tu reserva y disfruta de nuestro mejor confort.',
+                enjoy: '<button onclick="window.open(\'https://ricardosaldanha5.github.io/casinha-da-gloria/\', \'_blank\')" class="button">Ahora está con nosotros, haz tu reserva y disfruta de nuestro mejor confort</button>',
             },
             fr: {
-                title: 'Explorez le Portugal : Votre voyage',
-                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> vous souhaite le meilleur séjour. De quel pays venez vous?',
+                title: 'Explorez le Portugal : Votre voyage',
+                question: '<span style="color: green;"><strong>Casinha da Glória</strong></span> vous souhaite le meilleur séjour. De quel pays venez-vous?',
+                questionPlaceholder: 'Indiquez votre pays',
                 verify: 'Vérifier',
-                from: 'Tu viens de',
-                choice: 'Félicitations, tu as fait le meilleur choix, rester à la maison!',
-                far: 'Wow... tu viens de LOIN. Profite de ton séjour au Portugal.',
-                enjoy: 'Maintenant c\'est avec nous, fais ta réservation et profite de notre meilleur confort.',
+                from: 'Vous venez de',
+                choice: 'Félicitations, vous avez fait le meilleur choix, rester à la maison!',
+                far: 'Wow... vous venez de LOIN. Profitez de votre séjour au Portugal.',
+                enjoy: '<button onclick="window.open(\'https://ricardosaldanha5.github.io/casinha-da-gloria/\', \'_blank\')" class="button">Maintenant c\'est avec nous, faites votre réservation et profitez de notre meilleur confort</button>',
             }
         };
 
+        let currentLanguage = 'pt'; // Define a língua padrão como português
+
         function changeLanguage(lang) {
+            currentLanguage = lang;
             document.getElementById('title').innerText = translations[lang].title;
-            document.getElementById('question').innerHTML = `${translations[lang].question} <input type="text" id="txtnac">`;
+            document.getElementById('question').innerHTML = `${translations[lang].question} <input type="text" id="txtnac" placeholder="${translations[lang].questionPlaceholder}">`;
             document.getElementById('btnVerificar').value = translations[lang].verify;
         }
 
@@ -205,18 +214,19 @@
         function verificarNacionalidade() {
             const nacionalidade = document.querySelector('#txtnac').value.trim();
             const res = document.querySelector('#res');
-            const lang = document.documentElement.lang || 'pt-pt';  
+            const lang = currentLanguage; // Usa a língua atual selecionada
 
-            res.innerHTML = `${translations[lang.split('-')[0]].from} ${nacionalidade}?`;
+            res.innerHTML = `${translations[lang].from} ${nacionalidade}?`;
 
             if (nacionalidade.toLowerCase() === 'portugal') {
-                res.innerHTML += `<p>${translations[lang.split('-')[0]].choice}</p>`;
+                res.innerHTML += `<p>${translations[lang].choice}</p>`;
             } else {
-                res.innerHTML += `<p>${translations[lang.split('-')[0]].far}</p>`;
+                res.innerHTML += `<p>${translations[lang].far}</p>`;
             }
 
-            res.innerHTML += `<p>${translations[lang.split('-')[0]].enjoy}</p>`;
+            res.innerHTML += `${translations[lang].enjoy}`;
         }
     </script>
 </body>
 </html>
+
